@@ -12,25 +12,15 @@ string rtrim(const string &);
  * The function accepts INTEGER_ARRAY grades as parameter.
  */
 
-
-//
-
 vector<int> gradingStudents(vector<int> grades) {
-    if(grades.size()<1||grades.size()>60)
-        exit(1);
+    
     for(int i = 0;i<grades.size();i++){
-        if(grades[i]<0||grades[i]>100)
-        exit(2);
-        else if(grades[i]<38)
-            ;
-        else if(grades[i]%5>=3)
+        
+        if(grades[i]>=38&&grades[i]%5>=3)
             grades[i]+=(5-grades[i]%5);
     }
     return grades;
 }
-
-//
-
 
 int main()
 {
