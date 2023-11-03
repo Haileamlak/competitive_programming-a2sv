@@ -9,7 +9,7 @@ void insertionSort1(int n, vector<int> arr) {
             arr[i + 1] = temp;
             found = true;
         }
-        else arr[i+1] = arr[i];
+        else arr[i + 1] = arr[i];
         for(int i=0;i<n;i++)
             cout<<arr[i]<<" ";
         cout<<endl;
