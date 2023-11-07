@@ -14,7 +14,7 @@ public:
             {
                 rsum += nums[j];
             }
-            if(lsum==rsum)
+            if(lsum == rsum)
                 return i;
         }
         return -1;
