@@ -15,21 +15,21 @@ string rtrim(const string &);
  */
 
 int countingValleys(int steps, string path) {
-    if(2>steps||steps>pow(10,6))
+    if(2 > steps || steps > pow (10,6))
         exit(1);
     int vcount = 0,height = 0;
-    bool down=false;
+    bool down = false;
     for(int i = 0;i<steps;i++){
-        if(path[i]!='U'&&path[i]!='D')
+        if(path[i] != 'U' && path[i] != 'D')
             exit(3);
-        if(path[i]=='U'){
-            if(down&&height==-1)
+        if(path[i] == 'U'){
+            if(down && height == -1)
                 vcount++;
             height++;
             
         }
         else height--;
-        if(height<0)
+        if(height < 0)
             down = true;
         else down = false;
     }
