@@ -9,10 +9,10 @@ public:
             if(nums[right])
                 length++;
             
-            if((right - left + 1) - length > k){
+            if((right - left + 1) - length > k)
                 if(nums[left++])
                     length--;
-            }
+        
             else{
                 maxLength = max(maxLength, (right - left + 1));
             }
