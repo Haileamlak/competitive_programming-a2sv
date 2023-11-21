@@ -1,9 +1,7 @@
 class MinStack
 {
 public:
-    MinStack()
-    {
-    }
+    MinStack(){}
 
     void push(int val)
     {
