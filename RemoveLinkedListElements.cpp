@@ -16,7 +16,7 @@ Example 3:
 Input: head = [7,7,7,7], val = 7
 Output: []
   */
- \/**
+ /**
  * Definition for singly-linked list.
  * struct ListNode {
  *     int val;
