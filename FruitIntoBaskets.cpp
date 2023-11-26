@@ -43,7 +43,6 @@ public:
             
             length++;
         }
-
         maxFruit = max(length, maxFruit);
         return maxFruit;
     }
