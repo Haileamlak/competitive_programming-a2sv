@@ -15,8 +15,6 @@ Return the sum of all the scores on the record after applying all the operations
 
 The test cases are generated such that the answer and all intermediate calculations fit in a 32-bit integer and that all operations are valid.
 
- 
-
 Example 1:
 
 Input: ops = ["5","2","C","D","+"]
