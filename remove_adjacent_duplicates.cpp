@@ -1,21 +1,12 @@
 class Solution {
 public:
-    string removeAdjacentDuplicates)string s){
-        // string res = "";
-
-        int len = s.length();
-        int left = 0, right = 1;
-        while(right < len){
-            if(s[right] == s[left]){
-                left--;
-                right++;
-            }
-            else{
-                s[left++] = s[right];
-                right++;
-            }
+    string removeDuplicates(string s) {
+        int i = 0, n = s.length();
+        for (int j = 0; j < n; ++j, ++i) {
+            s[i] = s[j];
+            if (i > 0 && s[i - 1] == s[i]) // count = 2
+                i -= 2;
         }
-        s[left + 1] = '\0';
-        return s;
+        return s.substr(0, i);
     }
-};
+};`
