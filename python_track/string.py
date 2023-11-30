@@ -1,3 +1,5 @@
 phrase = "A2SV community \\ In person Education \"python track\""
-phrase2 = "A2SV community \\ In person Education \"python tracK\""
+print(phrase.isalnum())
+print(phrase.capitalize())
+print(phrase.split(" "))
 print(phrase.swapcase())
