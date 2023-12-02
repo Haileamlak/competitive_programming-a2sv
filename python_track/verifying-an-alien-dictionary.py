@@ -11,12 +11,11 @@ class Solution:
             return True
         if str2 == '':
             return False
-        elif order.find(str1[0]) > order.find(str2[0]):
+        if order.find(str1[0]) > order.find(str2[0]):
             return False
-        elif order.find(str1[0]) == order.find(str2[0]):
+        if order.find(str1[0]) == order.find(str2[0]):
             return self.areSorted(str1[1:], str2[1:], order)
-        else:
-            return True
+        return True
             
 
 
