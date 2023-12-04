@@ -10,9 +10,7 @@ class Solution:
                 i += 1
             else:
                 can = capacity
-                steps += (i + 1) * 2 + 1
-                can -= plants[i + 1]
-                i += 1
+                steps += (i + 1) * 2 
         
         return steps
                 
