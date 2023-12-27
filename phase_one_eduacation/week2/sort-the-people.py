@@ -1,15 +1,17 @@
 class Solution:
     def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
-        for i in range(1, len(names)):
-            temp_height = heights[i]
-            temp_name = names[i]
-            j = i
-            while j >= 1 and temp_height > heights[j - 1]:
-                heights[j] = heights[j - 1]
-                names[j] = names[j - 1]
-                j -= 1
+        high = max(heights)
+        names_map = {}
+        height_count = [0 for _ in range(high + 1)]
 
-            heights[j] = temp_height
-            names[j] = temp_name
+        for i in range(len(names)):
+            height_count[heights[i]] += 1
+            names_map[heights[i]] = names_map.get(heights[i], []) + [names[i]]
+        
+        res = []
+        for i in range(high, -1, -1):
+            while height_count[i] > 0:
+                res.append(names_map[i][height_count[i] - 1])
+                height_count[i] -= 1
 
-        return names
+        return res
