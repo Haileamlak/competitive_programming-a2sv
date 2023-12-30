@@ -6,10 +6,7 @@ class Solution:
                     return isLarger(a, b[i:])
                 elif i == len(b):
                     return isLarger(a[i:], b)
-                else:
-                    if a[i] == b[i]:
-                        pass
-                    else:
+                elif a[i] != b[i]:
                         return a[i] > b[i]
 
             return False
