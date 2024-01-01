@@ -85,7 +85,7 @@
 //             }
 //             else
 //             {
-//                 cout << index[start][0] << " " << index[start][1] << "\n";
+//                 cout << index[start][0] + 1 << " " << index[start][1] + 1<< "\n";
 //             }
 //         }
 //     }
@@ -93,7 +93,7 @@
 //     return 0;
 // }
 
-// #include <bits/stdc++.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
