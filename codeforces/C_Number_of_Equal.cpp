@@ -38,6 +38,7 @@ int main()
                 j++;
             }
             res += ((i % INT_MAX) * (j % INT_MAX)) % INT_MAX;
+            res %= INT_MAX;
         }
         else if (a[top] < b[bottom])
             top++;
