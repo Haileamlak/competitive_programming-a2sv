@@ -25,5 +25,4 @@ class Solution(object):
             if temp[i] > capacity:
                 return False
         
-        print(temp)
         return True
