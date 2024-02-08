@@ -1,39 +1,32 @@
 class Solution:
     def countCompleteSubarrays(self, nums: List[int]) -> int:
-        left = 0
-        totalUnique = 0
-        unique_set = set()
-        for num in nums:
-            if num not in unique_set:
-                totalUnique += 1
-                unique_set.add(num)
-            # else:
-        
-        print(totalUnique)
+        # count of unique numbers inside nums
+        totalUnique = len(set(nums))
+
+        # the output initially is zero
         res = 0
+
+        # count of each number in the window currently
         window = defaultdict(int)
+
+        # count of unique numbers currently inside the window
         curr_unique = 0
-        right = -1
-        while right < len(nums):
-            if curr_unique == totalUnique:
-                res += len(nums) - right
-                print('res', res)
+
+        left = 0
+        for right in range(len(nums)):
+            window[nums[right]] += 1
+            if window[nums[right]] == 1:
+                curr_unique += 1
+
+            while curr_unique == totalUnique:
+                res += len(nums) - right # if it works for right it should work also for all indexes greater than right
+
                 window[nums[left]] -= 1
                 if window[nums[left]] == 0:
                     curr_unique -= 1
                     del window[nums[left]]
-                print(curr_unique)
+
                 left += 1
-            else:
-                right += 1
-                if right == len(nums):
-                    break
-                window[nums[right]] += 1
-                if window[nums[right]] == 1:
-                    curr_unique += 1
-                    # window.add(nums[right])
-                # else:
-                
         
         return res
             
