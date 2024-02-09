@@ -11,7 +11,6 @@ class Solution:
         count = 0
         for col1 in range(n):
             for col2 in range(col1, n):
-                print(col1, col2)
                 count_prefix = defaultdict(int)
                 count_prefix[0] = 1
 
