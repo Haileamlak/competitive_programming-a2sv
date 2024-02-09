@@ -10,9 +10,6 @@ for _ in range(int(input())):
         
         else:
             res += b  
-            if b > 0:      
-                b = 1
-            else:
-                b = 0
+            b = int(bool(b))
 
     print(res)
