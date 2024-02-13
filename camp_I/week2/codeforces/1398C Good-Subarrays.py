@@ -7,15 +7,18 @@ for _ in range(int(input())):
 
     pre_map = collections.defaultdict(int)
     pre_map[0] = 1
+
     currSum = 0
+    res = 0
     for i in range(len(arr)):
         currSum += arr[i]
 
-        pre_map[currSum - i - 1] += 1
+        x = currSum - i - 1
+        pre_map[x] += 1
+        res += pre_map[x] - 1
 
-    res = 0
-    for key, value in pre_map.items():
-        n = value
-        res += n * (n - 1) // 2
+    # for key, value in pre_map.items():
+    #     n = value
+    #     res += n * (n - 1) // 2
 
     print(res)
