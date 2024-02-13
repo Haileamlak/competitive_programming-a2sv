@@ -30,7 +30,6 @@ class LRUCache:
             self.tail.prev = node
             node.prev.next = node
 
-            self.cache[key] = node
             return node.val
         
         return -1
@@ -48,7 +47,6 @@ class LRUCache:
             node.prev.next = node
 
             node.val = value
-            self.cache[key] = node
 
         elif self.capacity == self.count:
             least = self.head.next
