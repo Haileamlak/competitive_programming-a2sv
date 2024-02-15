@@ -10,15 +10,17 @@ class Solution:
         # return arr[-1]
 
         surples = 0
+        count = defaultdict(int)
         for elem in arr:
             if elem > len(arr):
                 surples += 1
+            else:
+                count[elem] += 1
             
-        elements = Counter(arr)
         res = len(arr)
         for i in range(len(arr), 0, -1):
-            if i in elements:
-                surples += elements[i] - 1
+            if i in count:
+                surples += count[i] - 1
 
             else:
                 if surples:
