@@ -4,15 +4,12 @@ class Solution:
             return ''
         
         index = 0
-        while index < len(palindrome): 
-            if palindrome[index] != 'a' and ((len(palindrome) % 2 == 0 or index != len(palindrome) // 2)):
-                break
-
+        while index < len(palindrome) // 2 and palindrome[index] == 'a': 
             index += 1
         
         non_palindrome = list(palindrome)
 
-        if index == len(palindrome):
+        if index >= len(palindrome) // 2:
             non_palindrome[-1] = 'b'
         else:
             non_palindrome[index] = 'a'
