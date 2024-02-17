@@ -2,14 +2,8 @@ t = int(input())
 
 for _ in range(t):
     n = input()
-    res = 0
-    one = False
+    res = 1
     for i in range(len(n)):
-        if (n[i] == '0' or n[i] == '1'):
-            if not one:
-                res += 1
-            one = True
-        else:
-            res += 1
+        res = max(res, int(n[i]))
 
     print(res)
