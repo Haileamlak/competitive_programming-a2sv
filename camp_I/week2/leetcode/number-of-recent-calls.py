@@ -12,10 +12,8 @@ class RecentCounter:
             self.count -= 1
             self.requests.pop(0)
         
-        
         return self.count
         
-
 
 # Your RecentCounter object will be instantiated and called as such:
 # obj = RecentCounter()
