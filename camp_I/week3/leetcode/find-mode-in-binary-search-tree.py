@@ -5,33 +5,42 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    def findInorderPredecessor(self, node):
+        curr = node
+        while curr.right:
+            curr = curr.right
+        
+        return curr
+
     def findMode(self, root: Optional[TreeNode]) -> List[int]:
         modes = []
         max_streak = 0
         count = 0
         curr_num = 0
-        
-        def traverseInorder(root):
-            nonlocal count, max_streak, curr_num, modes
-            if not root:
-                return
-            
-            traverseInorder(root.left)
 
-            if root.val == curr_num:
-                count += 1
+        curr = root
+        while curr:
+            if curr.left:
+                friend = self.findInorderPredecessor(curr.left)
+                friend.right = curr
+
+                temp = curr.left
+                curr.left = None
+                curr = temp
+            
             else:
-                count = 1
-                curr_num = root.val
-            
-            if count > max_streak:
-                modes = [root.val]
-                max_streak = count
-            elif count == max_streak:
-                modes.append(root.val)
+                if curr.val == curr_num:
+                    count += 1
+                else:
+                    count = 1
+                    curr_num = curr.val
+                
+                if count > max_streak:
+                    modes = [curr.val]
+                    max_streak = count
+                elif count == max_streak:
+                    modes.append(curr.val)
 
-            traverseInorder(root.right)
-        
-        traverseInorder(root)
+                curr = curr.right
 
         return modes
