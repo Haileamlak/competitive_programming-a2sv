@@ -6,35 +6,32 @@
 #         self.right = right
 class Solution:
     def findMode(self, root: Optional[TreeNode]) -> List[int]:
-        elements = []
+        modes = []
+        max_streak = 0
+        count = 0
+        curr_num = 0
+        
         def traverseInorder(root):
+            nonlocal count, max_streak, curr_num, modes
             if not root:
                 return
             
             traverseInorder(root.left)
-            elements.append(root.val)
+
+            if root.val == curr_num:
+                count += 1
+            else:
+                count = 1
+                curr_num = root.val
+            
+            if count > max_streak:
+                modes = [root.val]
+                max_streak = count
+            elif count == max_streak:
+                modes.append(root.val)
+
             traverseInorder(root.right)
         
         traverseInorder(root)
 
-        modes = []
-        mode = 0
-        count = 1
-        for i in range(1, len(elements)):
-            if elements[i] == elements[i - 1]:
-                count += 1
-            else:
-                if count > mode:
-                    modes = [elements[i - 1]]
-                    mode = count
-                elif count == mode:
-                    modes.append(elements[i - 1])
-
-                count = 1
-
-        if count > mode:
-            modes = [elements[-1]]
-        elif count == mode:
-            modes.append(elements[-1])
-        
         return modes
