@@ -7,11 +7,12 @@
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         
-        def dfs(left,right):
+        def areEqual(left, right):
             if not left and not right:
                 return True
-            if not left or not right: 
+            if not left or not right:
                 return False
-            
-            return left.val==right.val and dfs(left.left,right.right) and dfs(left.right,right.left)
-        return dfs(root.left,root.right)
+
+            return (left.val == right.val) and areEqual(left.left, right.right) and areEqual(left.right, right.left)
+        
+        return areEqual(root.left, root.right)
