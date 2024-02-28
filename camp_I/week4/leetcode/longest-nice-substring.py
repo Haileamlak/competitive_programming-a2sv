@@ -7,6 +7,7 @@ class Solution:
         
         for i in range(len(s)):
             if s[i].swapcase() not in s_set:
+                
                 s1 = self.longestNiceSubstring(s[:i])
                 s2 = self.longestNiceSubstring(s[i + 1:])
 
