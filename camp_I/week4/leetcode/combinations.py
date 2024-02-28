@@ -1,19 +1,19 @@
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
         answer = []
-        stack = []
+        combination = []
 
         def backtrack(i):
-            if len(stack) == k:
-                answer.append(stack.copy())
+            if len(combination) == k:
+                answer.append(combination.copy())
                 return
             
-            for j in range(i + 1, n + 1):
-                stack.append(j)
+            for number in range(i + 1, n + 1):
+                combination.append(number)
 
-                backtrack(j)
+                backtrack(number)
             
-                stack.pop()
+                combination.pop()
         
         backtrack(0)
         return answer
