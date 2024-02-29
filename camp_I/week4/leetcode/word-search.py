@@ -7,6 +7,9 @@ class Solution:
 
         def back_track(i, j, index):
             nonlocal res
+            if res:
+                return
+                
             if index == len(word):
                 res = True
                 return
@@ -25,7 +28,11 @@ class Solution:
             visited.remove((i, j))
         
         for i in range(m):
+            if res:
+                break
             for j in range(n):
+                if res:
+                    break
                 back_track(i, j, 0)
 
         return res
