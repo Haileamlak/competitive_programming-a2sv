@@ -1,26 +1,25 @@
 class Solution:
     def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
-        subsets = set()
+        subsets = []
         subset = []
 
-        picked = set()
-        
+        nums.sort()
         def back_track(index):
             if index == len(nums):
-                subsets.add(tuple(sorted(subset)))
+                subsets.append(subset.copy())
+                return
             
-            for i in range(index, len(nums)):
-                if nums[i] not in picked:
-                    subset.append(nums[i])
-                    # picked.add(nums[i])
-                    
-                    back_track(i + 1)
+            next_index = index + 1
+            while next_index < len(nums) and nums[index] == nums[next_index]: 
+                next_index += 1
+            
+            subset.append(nums[index])
+                
+            back_track(index + 1)
 
-                    subset.pop()
-                    # picked.remove(nums[i])
-                # picked.add(nums[i])
-                back_track(i + 1)
-                # picked.add(nums[i])
+            subset.pop()
+
+            back_track(next_index)
 
         back_track(0)
-        return list(subsets)
+        return subsets
