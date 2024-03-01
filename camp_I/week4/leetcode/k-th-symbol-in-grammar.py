@@ -3,11 +3,9 @@ class Solution:
         if n == 1:
             return 0
         
+        half_size = pow(2, n - 2)
         
-        if k <= pow(2, n - 2):
-            return self.kthGrammar(n - 1, k)
-
-        if k == pow(2, n - 1):
-            return 1 - self.kthGrammar(n - 1, k // 2)
+        if k > half_size:
+            return 1 - self.kthGrammar(n - 1, k - half_size)
             
-        return 1 - self.kthGrammar(n - 1, k % pow(2, n - 2))
+        return self.kthGrammar(n - 1, k)
