@@ -3,17 +3,21 @@ class Solution:
         answer = []
         combination = []
 
-        def backtrack(i):
+        def backtrack(number):
             if len(combination) == k:
                 answer.append(combination.copy())
                 return
             
-            for number in range(i + 1, n + 1):
-                combination.append(number)
-
-                backtrack(number)
+            if number == n + 1:
+                return
             
-                combination.pop()
+            combination.append(number)
+
+            backtrack(number + 1)
         
-        backtrack(0)
+            combination.pop()
+
+            backtrack(number + 1)
+        
+        backtrack(1)
         return answer
