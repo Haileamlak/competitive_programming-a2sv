@@ -10,20 +10,20 @@ class Node:
 
 class Solution:
     def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
-        if not root:
-            return root
+
+        def connect_siblings(root):
+            if not root:
+                return
             
-        queue = deque([root, None])
-        while queue:
-            curr = queue.popleft()
-            if not curr:
-                if queue:
-                    queue.append(None)
-            else:
-                curr.next = queue[0] 
-                if curr.left:
-                    queue.append(curr.left)
-                if curr.right:
-                    queue.append(curr.right)
+            if root.left:
+                root.left.next = root.right
+
+            if root.right and root.next:
+                root.right.next = root.next.left
+
+            connect_siblings(root.left)
+            connect_siblings(root.right)
+
+        connect_siblings(root)
         
         return root
