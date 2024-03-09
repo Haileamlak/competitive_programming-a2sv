@@ -1,14 +1,16 @@
 class Solution:
     def hIndex(self, citations: List[int]) -> int:
-        citations.sort()
-
-        minimum = 0
-        maximum = min(citations[-1], len(citations))
-        while minimum <= maximum:
-            mid = minimum + (maximum - minimum) // 2
-            if citations[-mid] >= mid:
-                minimum = mid + 1
+        freq = [0] * (len(citations) + 1)
+        for citation in citations:
+            if citation > len(citations):
+                freq[len(citations)] += 1
             else:
-                maximum = mid - 1
+                freq[citation] += 1
         
-        return maximum
+        h = 0
+        for i in range(len(citations), -1, -1):
+            h += freq[i]
+            if h >= i:
+                return i
+        
+        return 0
