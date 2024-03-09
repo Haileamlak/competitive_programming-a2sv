@@ -1,46 +1,32 @@
 class SummaryRanges:
 
     def __init__(self):
-        self.intervals = []
+        self.elements = []
+        self.elements_set = set()
 
     def addNum(self, value: int) -> None:
-        left, right = 0, len(self.intervals) - 1
-        while left <= right:
-            mid = left + (right - left) // 2
-            if self.intervals[mid][0] <= value <= self.intervals[mid][1]:
-                return
-            elif self.intervals[mid][0] > value:
-                right = mid - 1
-            else:
-                left = mid + 1            
-        if left == len(self.intervals):
-            if self.intervals and self.intervals[-1][1] + 1 == value:
-                self.intervals[-1][1] = value
-            else:
-                self.intervals.append([value, value])
-        elif left == 0:
-            if self.intervals and self.intervals[0][0] - 1 == value:
-                self.intervals[0][0] = value
-            else:
-                self.intervals.insert(0, [value, value])
-        else:
-            if self.intervals[left - 1][1] + 1 == value and self.intervals[left][0] - 1 == value:
-                self.intervals[left - 1][1] = self.intervals[left][1]
-                self.intervals.pop(left)
-            elif self.intervals[left - 1][1] + 1 == value:
-                self.intervals[left - 1][1] = value
-            elif self.intervals[left][0] - 1 == value:
-                self.intervals[left][0] = value
-            else:
-                self.intervals.insert(left, [value, value])
-        
-
+        if value not in self.elements_set:
+            bisect.insort(self.elements, value)  
+            self.elements_set.add(value)
 
     def getIntervals(self) -> List[List[int]]:
-        return self.intervals        
+        if not self.elements:
+            return []
+
+        res = []
+        start = end = self.elements[0]
+        for i in range(1, len(self.elements)):
+            if self.elements[i] - end != 1:
+                res.append([start, end])
+                start = end = self.elements[i]
+            else:
+                end += 1
+        
+        res.append([start, end])
+        return res      
 
 
 # Your SummaryRanges object will be instantiated and called as such:
 # obj = SummaryRanges()
 # obj.addNum(value)
-# param_2 = obj.getIntervals()
+# param_2 = obj.getelements()
