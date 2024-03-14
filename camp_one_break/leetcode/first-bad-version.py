@@ -3,15 +3,16 @@
 
 class Solution:
     def firstBadVersion(self, n: int) -> int:
-        left = 1
-        right = n
-        while left < right:
-            bad = left + (right - left) // 2
 
-            if isBadVersion(bad):
-                right = bad
-            else:
-                left = bad + 1
-    
+        def binary_search(left, right):
+            if left == right:
+                return left
 
-        return left
+            mid = left + (right - left) // 2
+
+            if isBadVersion(mid):
+                return binary_search(left, mid)
+
+            return binary_search(mid + 1, right)
+
+        return binary_search(1, n)
