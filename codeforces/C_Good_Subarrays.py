@@ -3,7 +3,7 @@ import collections
 for _ in range(int(input())):
     n = int(input())
     given = input()
-    arr = [int(given[i] ) for i in range(len(given))]
+    arr = [int(given[i]) for i in range(len(given))]
 
     pre_map = collections.defaultdict(int)
     pre_map[0] = 1
@@ -20,5 +20,5 @@ for _ in range(int(input())):
     # for key, value in pre_map.items():
     #     n = value
     #     res += n * (n - 1) // 2
-
+    
     print(res)
