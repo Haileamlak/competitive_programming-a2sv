@@ -10,7 +10,9 @@ The program upskills high-potential university students, connects them with inte
 
 A2SV’s rigorous training program prepares students for internships with companies like Google, Palantir, and Coinbase. These internships provide the experience needed to design and build products that improve the quality of life in Africa. Notably, the first cohort of A2SV students achieved a 54% success rate at Google internship interviews for summer 2021.
 
-## Programming Languages Used: *Python*, *C++*
+## Programming Languages Used: 
+ - *Python*
+ - *C++*
 
 ## Acknowledgments
 
