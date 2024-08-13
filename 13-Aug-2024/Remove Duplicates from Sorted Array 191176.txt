@@ -1,0 +1,13 @@
+# Problem: Remove Duplicates from Sorted Array - https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+
+func removeDuplicates(nums []int) int {
+    var placeholder int = 1
+    for seeker := 1;seeker < len(nums);seeker++ {
+        if nums[seeker] != nums[seeker - 1]{
+            nums[placeholder] = nums[seeker]
+            placeholder++
+        }
+    }
+    
+    return placeholder
+}
